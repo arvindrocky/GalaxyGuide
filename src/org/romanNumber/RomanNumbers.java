@@ -1,4 +1,4 @@
-package org;
+package org.romanNumber;
 
 public enum RomanNumbers {
 	I(1),
