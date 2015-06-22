@@ -3,34 +3,24 @@ package org.romanNumber;
 public class RomanNumberToEnglishNumberConvertor {
 	
 	public static Integer convertRomanNumber (String romanNumber) {
-		/*String[] listOfRomanCharacters =  romanNumber.split("(?!^)");
-		Integer value = 0;
-		int currentNumericValue = 0, nextNumericValue = 0;
+		String[] listOfRomanCharacters = romanNumber.split("(?!^)");
+		int totalValue = 0, currentNumericValue = 0, nextNumericValue = 0;
 		
-		for(String romanCharacter : listOfRomanCharacters) {
-			currentNumericValue = RomanNumbers.fromString(romanCharacter).getValue();
-		}
-		
-		for(int i=0; i<romanCharacter.length; i++) {
-			
-			currentNumericValue=RomanNumbers.RomanInt(romanCharacter[i]);
-			if(i<romanCharacter.length-1)
-			NextNumericValue=RomanNumbers.RomanInt(romanCharacter[i+1]);
-			if(currentNumericValue<NextNumericValue)
-			{
-				value=value+NextNumericValue-currentNumericValue;
+		for (int i=0; i<listOfRomanCharacters.length; i++) {
+			currentNumericValue = RomanNumbers.fromString(listOfRomanCharacters[i]).getValue();
+			if (i < listOfRomanCharacters.length-1) {
+				nextNumericValue = RomanNumbers.fromString(listOfRomanCharacters[i+1]).getValue();
+			}
+			if (currentNumericValue < nextNumericValue) {
+				totalValue += nextNumericValue - currentNumericValue;
 				i++;
 			}
-			else
-			{
-				value=value+currentNumericValue;
+			else {
+				totalValue += currentNumericValue;
 			}
-				
-			
-		}*/
+		}
 		
-		return 100;
-
+		return totalValue;
 	}
 
 }

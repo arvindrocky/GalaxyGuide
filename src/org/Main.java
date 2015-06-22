@@ -11,9 +11,6 @@ public class Main {
 			System.out.println("Please specify input file name path");
 		} else {
 			List<String> listOfLines = FileUtil.parseFile(args[0]);
-			/*for(String line : listOfLines) {
-				System.out.println(line);
-			}*/
 			
 			GalaxyNotes notes = new GalaxyNotes(listOfLines);
 			notes.parseNotes();
@@ -53,5 +50,8 @@ public class Main {
 		String credit = "34 Credits";
 		String stringToBeReplaced = "credits";
 		System.out.println(credit.toLowerCase().replaceAll(stringToBeReplaced, "").trim());*/
+		
+		/*System.out.println("============");
+		System.out.println(RomanNumberToEnglishNumberConvertor.convertRomanNumber("MCMIII"));*/
 	}
 }
