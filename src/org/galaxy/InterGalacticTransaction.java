@@ -6,21 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.galaxy.notes.GalaxyNotesNew;
+import org.galaxy.notes.GalaxyNotes;
 import org.galaxy.parser.GalaxyNotesParser;
 import org.romanNumber.RomanNumbers;
 import org.utils.TextUtil;
 
 public class InterGalacticTransaction {
 	private List<String> notes;
-	private GalaxyNotesNew galaxyNotes;
+	private GalaxyNotes galaxyNotes;
 	private List<String> listOfQuestions;
 	
 	private static final String INVALID_QUESTION_REPLY = "I have no idea what you are talking about";
 	
 	public InterGalacticTransaction (List<String> notes) {
 		this.notes = notes;
-		this.galaxyNotes = new GalaxyNotesNew();
+		this.galaxyNotes = new GalaxyNotes();
 		this.listOfQuestions = new ArrayList<String>();
 	}
 	
