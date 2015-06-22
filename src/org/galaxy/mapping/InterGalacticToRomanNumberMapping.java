@@ -1,4 +1,4 @@
-package org.galaxy;
+package org.galaxy.mapping;
 
 import org.romanNumber.RomanNumbers;
 

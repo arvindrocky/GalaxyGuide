@@ -3,8 +3,8 @@ package org.galaxy.notes;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.galaxy.InterGalacticToRomanNumberMapping;
-import org.galaxy.MetalToCreditsMapping;
+import org.galaxy.mapping.InterGalacticToRomanNumberMapping;
+import org.galaxy.mapping.MetalToCreditsMapping;
 import org.romanNumber.RomanNumbers;
 
 public class GalaxyNotes {

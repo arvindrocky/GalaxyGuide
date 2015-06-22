@@ -2,8 +2,8 @@ package org.galaxy.parser;
 
 import java.util.Map;
 
-import org.galaxy.InterGalacticToRomanNumberMapping;
-import org.galaxy.MetalToCreditsMapping;
+import org.galaxy.mapping.InterGalacticToRomanNumberMapping;
+import org.galaxy.mapping.MetalToCreditsMapping;
 import org.romanNumber.RomanNumberToEnglishNumberConvertor;
 import org.romanNumber.RomanNumbers;
 import org.utils.TextUtil;

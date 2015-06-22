@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.galaxy.mapping.InterGalacticToRomanNumberMapping;
+import org.galaxy.mapping.MetalToCreditsMapping;
 import org.galaxy.notes.GalaxyNotes;
 import org.galaxy.parser.GalaxyNotesParser;
 import org.romanNumber.RomanNumbers;

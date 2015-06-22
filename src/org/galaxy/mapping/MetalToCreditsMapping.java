@@ -1,4 +1,4 @@
-package org.galaxy;
+package org.galaxy.mapping;
 
 public final class MetalToCreditsMapping {
 	private final String metalName; 
