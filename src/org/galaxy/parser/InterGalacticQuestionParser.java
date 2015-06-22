@@ -14,7 +14,7 @@ public class InterGalacticQuestionParser {
 			String[] listOfPhrases = question.toLowerCase().split(" is ");
 			if (listOfPhrases.length == 2) {
 				listOfParsedQuestions.add(TextUtil.stripQuestionMark(listOfPhrases[1]).trim());
-			} else { // add question as it is if it is not a valid question
+			} else { // add entire question string if it is not a valid question
 				listOfParsedQuestions.add(question);
 			}
 		}

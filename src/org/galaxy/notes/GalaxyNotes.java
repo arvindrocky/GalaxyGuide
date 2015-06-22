@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.galaxy.parser.GalaxyNotesParser;
 import org.galaxy.parser.InterGalacticQuestionParser;
 import org.romanNumber.RomanNumberToEnglishNumberConvertor;
 import org.romanNumber.RomanNumbers;
@@ -15,16 +14,18 @@ import org.utils.TextUtil;
 public class GalaxyNotes {
 	
 	private List<String> notes;
+	
 	private Map<String, RomanNumbers> interGalacticMapping = new HashMap<String, RomanNumbers>();
 	private Map<String, Double> metalToCreditsMapping = new HashMap<String, Double>();
 	private List<String> listOfQuestions = new ArrayList<String>();
+	
 	private static final String INVALID_QUESTION_REPLY = "I have no idea what you are talking about";
 	
 	public GalaxyNotes(List<String> notes) {
 		this.notes = notes;
 	}
 
-	public void parseNotes () {
+	/*public void parseNotes () {
 		for (String line : this.notes) {
 			if (GalaxyNotesParser.isIntergalacticToRomanNumberMappingNote(line)) {
 				// do inter-galactic mapping
@@ -50,7 +51,7 @@ public class GalaxyNotes {
 				this.listOfQuestions.add(line);
 			}
 		}
-	}
+	}*/
 	
 	public Map<String, String> getListOfAnswers () {
 		Map<String, String> listOfRomanNumberQuestions = new LinkedHashMap<String, String>();

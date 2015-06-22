@@ -1,5 +1,11 @@
 package org.galaxy.parser;
 
+import java.util.Map;
+
+import org.galaxy.InterGalacticToRomanNumberMapping;
+import org.galaxy.MetalToCreditsMapping;
+import org.romanNumber.RomanNumberToEnglishNumberConvertor;
+import org.romanNumber.RomanNumbers;
 import org.utils.TextUtil;
 
 public class GalaxyNotesParser {
@@ -15,19 +21,40 @@ public class GalaxyNotesParser {
 		return line.toLowerCase().endsWith(CREDIT_STRING);
 	}
 	
-	// TODO : Return a bean object instead of array string
-	public static String[] parseInterGalacticToRomanNumberNote (String line) {
+	public static InterGalacticToRomanNumberMapping parseInterGalacticToRomanNumberNote (String line) {
 		String[] individualWords = line.toLowerCase().split(" is ");
 		// 0th index is inter-galactic name and 1st index is the roman number
-		String[] result = {individualWords[0].trim(), individualWords[1].trim().toUpperCase()};
-		return result;
+		return new InterGalacticToRomanNumberMapping(individualWords[0].trim(),
+				RomanNumbers.fromString(individualWords[1].trim().toUpperCase()));
 	}
 	
-	public static String[] parseMetalToCrediNote (String line) {
+	public static MetalToCreditsMapping parseMetalToCrediNote (String line,
+			Map<String, RomanNumbers> interGalacticMapping) {
+		String romanNumbers = "", metalName = "";
+		Double creditValue = 0.0;
 		String[] creditMappingPhrase = line.toLowerCase().split(" is ");
+		
 		// 0th index is metal name along with roman numbers and 1st index is the credit value
-		String[] result = {creditMappingPhrase[0].trim(), creditMappingPhrase[1].replaceAll(CREDIT_STRING, "").trim()};
-		return result;
+		if (creditMappingPhrase.length == 2) {
+			String[] metalPhrase = TextUtil.splitLineIntoWords(creditMappingPhrase[0]);
+			creditValue = Double.parseDouble(creditMappingPhrase[1].replaceAll(CREDIT_STRING, "").trim());
+			
+			for (String word : metalPhrase) {
+				if (interGalacticMapping.containsKey(word.trim())) {
+					romanNumbers += interGalacticMapping.get(word);
+				} else {
+					metalName = word;
+					break;
+				}
+			}
+		}
+		return new MetalToCreditsMapping(metalName,
+				getValueOfOneUnitOfMetal(romanNumbers, creditValue));
+	}
+	
+	private static Double getValueOfOneUnitOfMetal (String romanNumbers, Double creditValue) {
+		Double value = RomanNumberToEnglishNumberConvertor.convertRomanNumber(romanNumbers);
+		return creditValue / value;
 	}
 
 }

@@ -1,10 +1,11 @@
 package org;
 
 import java.util.List;
-import java.util.Map;
 
-import org.galaxy.notes.GalaxyNotes;
+import org.galaxy.InterGalacticTransaction;
 import org.utils.FileUtil;
+import org.utils.TextUtil;
+
 
 public class Main {
 
@@ -14,21 +15,25 @@ public class Main {
 		} else {
 			List<String> listOfLines = FileUtil.parseFile(args[0]);
 			
-			GalaxyNotes notes = new GalaxyNotes(listOfLines);
+			InterGalacticTransaction galacticTrans = new InterGalacticTransaction(listOfLines);
+			galacticTrans.parseNotes();
+			galacticTrans.transactInGalaxy();
+			
+			/*GalaxyNotes notes = new GalaxyNotes(listOfLines);
 			notes.parseNotes();
 			Map<String, String> listOfAnswers = notes.getListOfAnswers();
 			
 			for (Map.Entry<String, String> entry : listOfAnswers.entrySet()) {
 				String result = entry.getValue().isEmpty() ? entry.getKey() : entry.getKey() + " is " + entry.getValue();
 				System.out.println(result);
-			}
+			}*/
 		}
 		
-		/*String line = null;
-		String[] creditMapping = TextUtil.splitLineIntoWords(line);
+		/*String line = "how much Is pish tegj glob glob ?";
+		String[] creditMapping = TextUtil.stripQuestionMark(line).split(" (?i)is ");
 		
 		for (String a : creditMapping) {
-			System.out.println(a.trim());
+			System.out.println(a);
 		}
 		
 		System.out.println("============");*/
