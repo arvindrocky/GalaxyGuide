@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * An abstract class that implements IRule interface.
+ * This class is used to validate roman number based on a set of rules.
+ * @author arvind
+ */
 public class AbstractRule implements IRule {
 	
 	private String regex = "";

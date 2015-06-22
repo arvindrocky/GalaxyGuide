@@ -3,6 +3,10 @@ package org.romanNumber;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A enum to have all valid roman number
+ * @author arvind
+ */
 public enum RomanNumbers {
 	I(1),
 	V(5),
@@ -29,6 +33,11 @@ public enum RomanNumbers {
 		}
 	}
 	
+	/**
+	 * This method is used to get the enum from the string
+	 * @param symbol is the string representing the enum
+	 * @return the enum value
+	 */
 	public static RomanNumbers fromString(String symbol) {
 		return stringToEnum.get(symbol);
 	}

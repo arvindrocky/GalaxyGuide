@@ -6,29 +6,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO : ADD EXCEPTION CLASSES
+/**
+ * A class with static methods to do file utils.
+ * @author arvind
+ */
 public class FileUtil {
 	
-	public static List<String> parseFile (String inputFilePath) {
+	public static List<String> parseFile (String inputFilePath) throws IOException {
 		List<String> listOfLines = new ArrayList<String>();
-		
-		BufferedReader bufferReader = null;
 		String line;
-		try {
-			bufferReader = new BufferedReader(new FileReader(inputFilePath));
-			
-			while ((line = bufferReader.readLine()) != null) {
-				listOfLines.add(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				bufferReader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		
+		BufferedReader bufferReader = new BufferedReader(new FileReader(inputFilePath));
+		while ((line = bufferReader.readLine()) != null) {
+			listOfLines.add(line);
 		}
+		bufferReader.close();
 		
 		return listOfLines;
 	}

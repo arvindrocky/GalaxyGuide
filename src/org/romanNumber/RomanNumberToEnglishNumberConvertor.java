@@ -3,8 +3,18 @@ package org.romanNumber;
 import org.romanNumber.exception.InvalidRegularExpressionException;
 import org.utils.TextUtil;
 
+/**
+ * This class is used to conver roman number to english number value
+ * @author arvind
+ */
 public class RomanNumberToEnglishNumberConvertor {
 	
+	/**
+	 * This method gives us the english number value by parsing the roman number
+	 * @param romanNumber is the roman number to be parsed
+	 * @return converted english number
+	 * @throws InvalidRegularExpressionException
+	 */
 	public static Double convertRomanNumber (String romanNumber) throws InvalidRegularExpressionException {
 		validate(romanNumber);
 		

@@ -1,5 +1,9 @@
 package org.utils;
 
+/**
+ * A class with static methods to do text/string utils.
+ * @author arvind
+ */
 public class TextUtil {
 	
 	public static String[] splitLineIntoWords (String line) {

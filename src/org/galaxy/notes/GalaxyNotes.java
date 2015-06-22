@@ -7,6 +7,11 @@ import org.galaxy.mapping.InterGalacticToRomanNumberMapping;
 import org.galaxy.mapping.MetalToCreditsMapping;
 import org.romanNumber.RomanNumbers;
 
+/**
+ * This is the main notes class which is initialized after parsing the input file.
+ * Inter-galactic and metal-credit conversion notes are added to separate lists.
+ * @author arvind
+ */
 public class GalaxyNotes {
 	
 	private Map<String, RomanNumbers> interGalacticMapping;
