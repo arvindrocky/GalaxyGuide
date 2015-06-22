@@ -1,10 +1,13 @@
 package org.romanNumber;
 
+import org.romanNumber.exception.InvalidRegularExpressionException;
 import org.utils.TextUtil;
 
 public class RomanNumberToEnglishNumberConvertor {
 	
-	public static Double convertRomanNumber (String romanNumber) {
+	public static Double convertRomanNumber (String romanNumber) throws InvalidRegularExpressionException {
+		validate(romanNumber);
+		
 		String[] listOfRomanCharacters = TextUtil.splitWordIntoCharacters(romanNumber);
 		Double totalValue = 0.0;
 		int currentNumericValue = 0, nextNumericValue = 0;
@@ -24,6 +27,11 @@ public class RomanNumberToEnglishNumberConvertor {
 		}
 		
 		return totalValue;
+	}
+	
+	private static void validate (String romanNumber) throws InvalidRegularExpressionException {
+		RomanNumberValidation validator = new RomanNumberValidation();
+		validator.validateRomanNumber(romanNumber);
 	}
 
 }

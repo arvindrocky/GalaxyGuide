@@ -11,6 +11,7 @@ import org.galaxy.mapping.MetalToCreditsMapping;
 import org.galaxy.notes.GalaxyNotes;
 import org.galaxy.parser.GalaxyNotesParser;
 import org.romanNumber.RomanNumbers;
+import org.romanNumber.exception.InvalidRegularExpressionException;
 import org.utils.TextUtil;
 
 public class InterGalacticTransaction {
@@ -73,11 +74,19 @@ public class InterGalacticTransaction {
 					.containsKey(individualWords[0].toLowerCase().trim())) {
 				return getMetalValue(individualWords[0], 1.0) + " Credits";
 			} else {
-				return Integer.toString(convertRomanNumber(individualWords[0].toUpperCase().trim()).intValue());
+				try {
+					return Integer.toString(convertRomanNumber(individualWords[0].toUpperCase().trim()).intValue());
+				} catch (InvalidRegularExpressionException e) {
+					return "invalid. Regular expression is invalid";
+				}
 			}
 		} else if (individualWords.length == 2) {
-			return getMetalValue(individualWords[1],
-					convertRomanNumber(individualWords[0].trim())) + " Credits";
+			try {
+				return getMetalValue(individualWords[1],
+						convertRomanNumber(individualWords[0].trim())) + " Credits";
+			} catch (InvalidRegularExpressionException e) {
+				return "invalid. Regular expression is invalid";
+			}
 		}
 		return null;
 	}

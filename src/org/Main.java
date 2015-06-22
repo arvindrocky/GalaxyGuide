@@ -5,7 +5,6 @@ import java.util.List;
 import org.galaxy.InterGalacticTransaction;
 import org.utils.FileUtil;
 
-
 public class Main {
 
 	public static void main(String[] args) {

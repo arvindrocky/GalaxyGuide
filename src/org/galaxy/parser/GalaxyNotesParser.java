@@ -6,6 +6,7 @@ import org.galaxy.mapping.InterGalacticToRomanNumberMapping;
 import org.galaxy.mapping.MetalToCreditsMapping;
 import org.romanNumber.RomanNumberToEnglishNumberConvertor;
 import org.romanNumber.RomanNumbers;
+import org.romanNumber.exception.InvalidRegularExpressionException;
 import org.utils.TextUtil;
 
 public class GalaxyNotesParser {
@@ -53,7 +54,12 @@ public class GalaxyNotesParser {
 	}
 	
 	private static Double getValueOfOneUnitOfMetal (String romanNumbers, Double creditValue) {
-		Double value = RomanNumberToEnglishNumberConvertor.convertRomanNumber(romanNumbers);
+		Double value = 1.0;
+		try {
+			value = RomanNumberToEnglishNumberConvertor.convertRomanNumber(romanNumbers);
+		} catch (InvalidRegularExpressionException e) {
+			// if exception comes here, then the notes is wrong
+		}
 		return creditValue / value;
 	}
 
