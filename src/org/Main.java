@@ -1,6 +1,7 @@
 package org;
 
 import java.util.List;
+import java.util.Map;
 
 import org.utils.FileUtil;
 
@@ -14,7 +15,13 @@ public class Main {
 			
 			GalaxyNotes notes = new GalaxyNotes(listOfLines);
 			notes.parseNotes();
-			System.out.println(notes.toString());
+			// System.out.println(notes.toString());
+			Map<String, String> listOfAnswers = notes.getListOfAnswers();
+			
+			for (Map.Entry<String, String> entry : listOfAnswers.entrySet()) {
+				String result = entry.getValue().isEmpty() ? entry.getKey() : entry.getKey() + " is " + entry.getValue();
+				System.out.println(result);
+			}
 		}
 		
 		/*String line = "glob glob Silver is 34 Credits";
@@ -43,15 +50,24 @@ public class Main {
 
 		/*for (RomanNumbers a : RomanNumbers.values()) {
 			System.out.println(a.toString());
-		}
+		}*/
 		
-		System.out.println("============");
+		/*System.out.println("============");
 		
-		String credit = "34 Credits";
-		String stringToBeReplaced = "credits";
+		String credit = "34 Credits ? ";
+		String stringToBeReplaced = "\\?";
 		System.out.println(credit.toLowerCase().replaceAll(stringToBeReplaced, "").trim());*/
 		
 		/*System.out.println("============");
-		System.out.println(RomanNumberToEnglishNumberConvertor.convertRomanNumber("MCMIII"));*/
+		System.out.println(RomanNumberToEnglishNumberConvertor.convertRomanNumber("MCMIII").intValue());*/
+		
+		/*System.out.println("============");
+		List<String> listOfQuestions = new ArrayList<String>();
+		listOfQuestions.add("how much is pish tegj glob glob ?");
+		listOfQuestions.add("how many Credits is glob prok Silver ?");
+		listOfQuestions.add("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?");
+		listOfQuestions.add("how many Credits is glob prok Iron ?");
+		
+		System.out.println(listOfQuestions.contains("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"));*/
 	}
 }

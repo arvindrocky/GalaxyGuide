@@ -2,11 +2,12 @@ package org.romanNumber;
 
 public class RomanNumberToEnglishNumberConvertor {
 	
-	public static Integer convertRomanNumber (String romanNumber) {
+	public static Double convertRomanNumber (String romanNumber) {
 		String[] listOfRomanCharacters = romanNumber.split("(?!^)");
-		int totalValue = 0, currentNumericValue = 0, nextNumericValue = 0;
+		Double totalValue = 0.0;
+		int currentNumericValue = 0, nextNumericValue = 0;
 		
-		for (int i=0; i<listOfRomanCharacters.length; i++) {
+		for (int i=0; i<listOfRomanCharacters.length && !listOfRomanCharacters[i].isEmpty(); i++) {
 			currentNumericValue = RomanNumbers.fromString(listOfRomanCharacters[i]).getValue();
 			if (i < listOfRomanCharacters.length-1) {
 				nextNumericValue = RomanNumbers.fromString(listOfRomanCharacters[i+1]).getValue();
