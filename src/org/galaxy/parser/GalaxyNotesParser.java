@@ -1,11 +1,13 @@
-package org.galaxy.notes;
+package org.galaxy.parser;
+
+import org.utils.TextUtil;
 
 public class GalaxyNotesParser {
 	
 	private static final String CREDIT_STRING = "credits";
 	
 	public static Boolean isIntergalacticToRomanNumberMappingNote (String line) {
-		String[] individualWords = line.toLowerCase().split("\\s+");
+		String[] individualWords = TextUtil.splitLineIntoWords(line.toLowerCase());
 		return individualWords.length == 3 && individualWords[1].equals("is");
 	}
 	

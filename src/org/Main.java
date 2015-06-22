@@ -3,6 +3,7 @@ package org;
 import java.util.List;
 import java.util.Map;
 
+import org.galaxy.notes.GalaxyNotes;
 import org.utils.FileUtil;
 
 public class Main {
@@ -15,7 +16,6 @@ public class Main {
 			
 			GalaxyNotes notes = new GalaxyNotes(listOfLines);
 			notes.parseNotes();
-			// System.out.println(notes.toString());
 			Map<String, String> listOfAnswers = notes.getListOfAnswers();
 			
 			for (Map.Entry<String, String> entry : listOfAnswers.entrySet()) {
@@ -23,6 +23,15 @@ public class Main {
 				System.out.println(result);
 			}
 		}
+		
+		/*String line = null;
+		String[] creditMapping = TextUtil.splitLineIntoWords(line);
+		
+		for (String a : creditMapping) {
+			System.out.println(a.trim());
+		}
+		
+		System.out.println("============");*/
 		
 		/*String line = "glob glob Silver is 34 Credits";
 		String[] creditMapping = line.split(" is ");

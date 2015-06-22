@@ -1,9 +1,11 @@
 package org.romanNumber;
 
+import org.utils.TextUtil;
+
 public class RomanNumberToEnglishNumberConvertor {
 	
 	public static Double convertRomanNumber (String romanNumber) {
-		String[] listOfRomanCharacters = romanNumber.split("(?!^)");
+		String[] listOfRomanCharacters = TextUtil.splitWordIntoCharacters(romanNumber);
 		Double totalValue = 0.0;
 		int currentNumericValue = 0, nextNumericValue = 0;
 		

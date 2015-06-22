@@ -1,4 +1,4 @@
-package org;
+package org.galaxy.notes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,10 +6,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.galaxy.InterGalacticQuestionParser;
-import org.galaxy.notes.GalaxyNotesParser;
+import org.galaxy.parser.GalaxyNotesParser;
+import org.galaxy.parser.InterGalacticQuestionParser;
 import org.romanNumber.RomanNumberToEnglishNumberConvertor;
 import org.romanNumber.RomanNumbers;
+import org.utils.TextUtil;
 
 public class GalaxyNotes {
 	
@@ -32,7 +33,7 @@ public class GalaxyNotes {
 			} else if (GalaxyNotesParser.isMetalToCreditMappingNote(line)) {
 				// do metal to credit mapping
 				String[] metalToCreditNoteResult = GalaxyNotesParser.parseMetalToCrediNote(line);
-				String[] metalPhrase = metalToCreditNoteResult[0].split("\\s+");
+				String[] metalPhrase = TextUtil.splitLineIntoWords(metalToCreditNoteResult[0]);
 				String romanNumbers = "", metalName = "";
 				for (String word : metalPhrase) {
 					if (this.interGalacticMapping.containsKey(word.trim())) {
@@ -57,7 +58,7 @@ public class GalaxyNotes {
 			if (this.listOfQuestions.contains(question)) {
 				listOfRomanNumberQuestions.put(INVALID_QUESTION_REPLY, "");
 			} else {
-				String[] individualWords = question.toLowerCase().split("\\s+");
+				String[] individualWords = TextUtil.splitLineIntoWords(question.toLowerCase());
 				String romanNumbers = "";
 				for (String word : individualWords) {
 					if (this.interGalacticMapping.containsKey(word)) {
@@ -73,35 +74,13 @@ public class GalaxyNotes {
 		return listOfRomanNumberQuestions;
 	}
 	
-	public String toString () {
-		String myNotes = "INTER-GALACTIC MAPPTINGS\n";
-		
-		for (Map.Entry<String, RomanNumbers> entry : this.interGalacticMapping.entrySet()) {
-			myNotes += entry.getKey() + " ===> " + entry.getValue() + "\n";
-		}
-		
-		myNotes += "\nMETAL TO CREDIT MAPPINGS\n";
-		
-		for (Map.Entry<String, Double> entry : this.metalToCreditsMapping.entrySet()) {
-			myNotes += entry.getKey() + " ===> " + entry.getValue() + "\n";
-		}
-		
-		myNotes += "\nQUESTIONS\n";
-		
-		for (String question : this.listOfQuestions) {
-			myNotes += question + "\n";
-		}
-		
-		return myNotes;
-	}
-	
 	private Double getValueOfOneUnitOfMetal (String romanNumbers, String creditValue) {
 		Double value = RomanNumberToEnglishNumberConvertor.convertRomanNumber(romanNumbers);
 		return Double.parseDouble(creditValue) / value;
 	}
 	
 	private String getValueOfRomanNumbersAndMetal (String romanNumbersAndMetalString) {
-		String[] individualWords = romanNumbersAndMetalString.split("\\s+");
+		String[] individualWords = TextUtil.splitLineIntoWords(romanNumbersAndMetalString);
 		if (individualWords.length == 1) {
 			if (this.metalToCreditsMapping.containsKey(individualWords[0].toLowerCase().trim())) {
 				return this.metalToCreditsMapping.get(individualWords[0]).intValue() + " Credits";

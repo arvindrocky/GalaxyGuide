@@ -1,7 +1,9 @@
-package org.galaxy;
+package org.galaxy.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.utils.TextUtil;
 
 public class InterGalacticQuestionParser {
 	
@@ -11,8 +13,8 @@ public class InterGalacticQuestionParser {
 		for (String question : listOfQuestions) {
 			String[] listOfPhrases = question.toLowerCase().split(" is ");
 			if (listOfPhrases.length == 2) {
-				listOfParsedQuestions.add(listOfPhrases[1].replaceAll("\\?", "").trim());
-			} else {
+				listOfParsedQuestions.add(TextUtil.stripQuestionMark(listOfPhrases[1]).trim());
+			} else { // add question as it is if it is not a valid question
 				listOfParsedQuestions.add(question);
 			}
 		}
