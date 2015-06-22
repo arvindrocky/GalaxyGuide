@@ -1,5 +1,8 @@
 package org.romanNumber;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum RomanNumbers {
 	I(1),
 	V(5),
@@ -18,4 +21,16 @@ public enum RomanNumbers {
 	public int getValue() {
 		return value;
 	}
+	
+	private static final Map<String, RomanNumbers> stringToEnum = new HashMap<String, RomanNumbers>();
+	static {
+		for (RomanNumbers num : values()) {
+			stringToEnum.put(num.toString(), num);
+		}
+	}
+	
+	public static RomanNumbers fromString(String symbol) {
+		return stringToEnum.get(symbol);
+	}
+
 }
